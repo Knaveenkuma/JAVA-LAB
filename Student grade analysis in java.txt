@@ -1,0 +1,65 @@
+
+package javaapplication1;
+
+import java.util.Scanner;
+
+
+public class javaapplication1 {
+
+    Scanner obj;
+    public static void main(String[] args) {
+        int m = 0,i,sum=0,avg,t,n=5;
+        String k;
+        Scanner obj = new Scanner(System.in);
+        System.out.println("Enter the name of the student:");
+        k=obj.next();
+        for(i=1;i<=n;i++)
+        {
+            System.out.println("Enter the mark"  +i +":");
+            m=obj.nextInt();
+            sum+=m;
+        }
+           
+        System.out.println("total:" +sum);
+        avg=sum/5;
+        System.out.println("Average:" +avg);
+        if(avg>=90)
+        {
+            System.out.println("Grade points:10");
+            System.out.println("Grade:O");
+        }
+        else if(avg>=80 && avg<90)
+        {
+            System.out.println("Grade points:9");
+            System.out.println("Grade:A+");
+        }
+       else if(avg>=70 && avg<80)
+        {
+            System.out.println("Grade points:8");
+            System.out.println("Grade:A");
+        }
+        else if(avg>=60 && avg<700)
+        {
+            System.out.println("Grade points:7");
+            System.out.println("Grade:B+");
+        }
+        else if(avg>=50 && avg<60)
+        {
+            System.out.println("Grade points:6");
+            System.out.println("Grade:B");
+        }
+        else
+        {
+            System.out.println("Grade points:0");
+            System.out.println("Grade:RA");
+        }
+    }
+}
+
+
+
+
+    
+
+    
+
