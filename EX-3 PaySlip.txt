@@ -1,0 +1,89 @@
+import java.util.Scanner;
+class Employee {
+    String emp_name;
+    int emp_id;
+    String address;
+    String mail_id;
+    String mobile_no;
+    double basicPay; 
+  
+    public void inputEmployeeDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Name: ");
+        emp_name = scanner.nextLine();
+        System.out.print("Employee ID: ");
+        emp_id = scanner.nextInt();
+        scanner.nextLine(); 
+        System.out.print("Address: ");
+        address = scanner.nextLine();
+        System.out.print("Mail ID: ");
+        mail_id = scanner.nextLine();
+        System.out.print("Mobile Number: ");
+        mobile_no = scanner.nextLine();
+        System.out.print("Basic Pay: ");
+        basicPay = scanner.nextDouble();
+    }
+
+    public void generatePaySlip() {
+        System.out.println("\n*******Pay Slip for " + emp_name + "*****");
+        System.out.println("Employee ID: " + emp_id);
+        System.out.println("Basic Pay: " + basicPay);
+    }
+}
+
+class Programmer extends Employee {
+    public void generatePaySlip() {
+        inputEmployeeDetails();
+        double da = 0.97 * basicPay;
+        double hra = 0.10 * basicPay;
+        double pf = 0.12 * basicPay;
+        double staffClubFund = 0.001 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - staffClubFund;
+
+        super.generatePaySlip(); 
+
+        System.out.println("Dearness Allowance (DA): " + da);
+        System.out.println("House Rent Allowance (HRA): " + hra);
+        System.out.println("Provident Fund (PF): " + pf);
+        System.out.println("Staff Club Fund: " + staffClubFund);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+    }
+}
+
+class AssistantProfessor extends Employee {
+    public void generatePaySlip() {
+        inputEmployeeDetails();
+        double da = 0.98 * basicPay;
+        double hra = 0.12 * basicPay;
+        double pf = 0.15 * basicPay;
+        double staffClubFund = 0.002 * basicPay;
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - staffClubFund;
+
+        super.generatePaySlip(); 
+
+        System.out.println("Dearness Allowance (DA): " + da);
+        System.out.println("House Rent Allowance (HRA): " + hra);
+        System.out.println("Provident Fund (PF): " + pf);
+        System.out.println("Staff Club Fund: " + staffClubFund);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+    }
+}
+
+class PaySlipGenerator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Programmer programmer = new Programmer();
+        System.out.println("Enter details for Programmer:");
+        programmer.generatePaySlip(); 
+        AssistantProfessor assistantProfessor = new AssistantProfessor();
+        System.out.println("\nEnter details for Assistant Professor:");
+        assistantProfessor.generatePaySlip(); 
+
+        scanner.close();
+    }
+}
