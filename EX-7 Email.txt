@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class EmailGenerator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your first name: ");
+        String firstName = scanner.nextLine();        
+        System.out.print("Enter your last name: ");
+        String lastName = scanner.nextLine();
+        String email = generateEmail(firstName, lastName);
+        System.out.println("Your email address is: " + email);
+    }
+
+    public static String generateEmail(String firstName, String lastName) {
+        String firstPart = firstName.substring(0, Math.min(firstName.length(), 3));
+        String lastPart = lastName.substring(0, Math.min(lastName.length(), 4));
+        String email = firstPart + "." + lastPart + "@gmail.com";
+        return email;
+    }
+}

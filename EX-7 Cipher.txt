@@ -1,0 +1,21 @@
+import java.util.Scanner;
+class CaesarCode {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a plaintext string: ");
+        String plaintext = scanner.nextLine().toUpperCase();
+        int shift = 3; 
+        StringBuilder ciphertext = new StringBuilder();
+        for (char c : plaintext.toCharArray()) {
+            if (Character.isLetter(c)) {
+                // Shift the character by 'shift' positions down the alphabet
+                char shiftedChar = (char) (((c - 'A' + shift) % 26) + 'A');
+                ciphertext.append(shiftedChar);
+            } else {
+                // Append non-alphabetic characters as is
+                ciphertext.append(c);
+            }
+        }
+        System.out.println("The ciphertext string is: " + ciphertext);
+    }
+}
