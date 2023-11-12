@@ -1,0 +1,25 @@
+//12-b program:
+public class ElementSearcher {
+
+    public static <T> boolean searchElement(T[] array, T target) {
+        for (T element : array) {
+            if (element.equals(target)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        int targetInt = 3;
+        boolean foundInt = searchElement(intArray, targetInt);
+        System.out.println("Element " + targetInt + " found: " + foundInt);
+
+        String[] strArray = {"apple", "banana", "orange", "grape"};
+        String targetStr = "orange";
+        boolean foundStr = searchElement(strArray, targetStr);
+        System.out.println("Element " + targetStr + " found: " + foundStr);
+    }
+}
