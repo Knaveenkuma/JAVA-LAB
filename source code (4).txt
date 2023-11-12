@@ -1,0 +1,62 @@
+//13-b program:
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Fruit {
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Fruit(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Fruit{name='" + name + "', price=" + price + ", quantity=" + quantity + '}';
+    }
+}
+
+public class FruitSortingExample {
+
+    public static void main(String[] args) {
+        // Create an ArrayList to store fruit information
+        ArrayList<Fruit> fruitList = new ArrayList<>();
+
+        // Populate the fruit list with 20 fruits (you can customize this part)
+        fruitList.add(new Fruit("Apple", 2.5, 10));
+        fruitList.add(new Fruit("Banana", 1.8, 15));
+        fruitList.add(new Fruit("Orange", 3.2, 8));
+        // Add more fruits as needed...
+
+        // Print unsorted fruit list
+        System.out.println("Unsorted Fruit List:");
+        for (Fruit fruit : fruitList) {
+            System.out.println(fruit);
+        }
+
+        // Sort the fruit list based on price using Comparator
+        Collections.sort(fruitList, Comparator.comparingDouble(Fruit::getPrice));
+
+        // Print sorted fruit list
+        System.out.println("\nSorted Fruit List (by Price):");
+        for (Fruit fruit : fruitList) {
+            System.out.println(fruit);
+        }
+    }
+}

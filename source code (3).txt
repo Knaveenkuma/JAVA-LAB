@@ -1,0 +1,69 @@
+//13-a program:
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StringOperationsApp {
+
+    public static void main(String[] args) {
+        ArrayList<String> stringList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        // Populate the string list (you can customize this part)
+        stringList.add("apple");
+        stringList.add("banana");
+        stringList.add("orange");
+        stringList.add("grape");
+        stringList.add("pear");
+
+        // Display the menu
+        while (true) {
+            System.out.println("\nString Operations Menu:");
+            System.out.println("1. Search for a string");
+            System.out.println("2. Display strings starting and ending with letters");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice (1-3): ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume the newline character
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the string to search: ");
+                    String searchString = scanner.nextLine();
+                    searchForString(stringList, searchString);
+                    break;
+                case 2:
+                    System.out.print("Enter the starting letter: ");
+                    char startLetter = scanner.next().charAt(0);
+                    System.out.print("Enter the ending letter: ");
+                    char endLetter = scanner.next().charAt(0);
+                    displayStringsStartAndEndWith(stringList, startLetter, endLetter);
+                    break;
+                case 3:
+                    System.out.println("Exiting the program. Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 3.");
+            }
+        }
+    }
+
+    private static void searchForString(ArrayList<String> stringList, String searchString) {
+        if (stringList.contains(searchString)) {
+            System.out.println("String '" + searchString + "' found in the list.");
+        } else {
+            System.out.println("String '" + searchString + "' not found in the list.");
+        }
+    }
+
+    private static void displayStringsStartAndEndWith(ArrayList<String> stringList, char startLetter, char endLetter) {
+        System.out.println("Strings starting with '" + startLetter + "' and ending with '" + endLetter + "':");
+        for (String str : stringList) {
+            if (str.length() > 0 && str.charAt(0) == startLetter && str.charAt(str.length() - 1) == endLetter) {
+                System.out.println(str);
+            }
+        }
+    }
+}
